@@ -1,5 +1,6 @@
 package dw.majorflow.config;
 
+
 import dw.majorflow.exception.MyAccessDeniedHandler;
 import dw.majorflow.exception.MyAuthenticationEntryPoint;
 import dw.majorflow.service.UserDetailService;
@@ -35,13 +36,15 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/css/**"),
                                 new AntPathRequestMatcher("/js/**"),
                                 new AntPathRequestMatcher("/img/**"),
+                                new AntPathRequestMatcher("/login"),
                                 new AntPathRequestMatcher("/majorflow/**"),
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/reply/**"),
-                                new AntPathRequestMatcher("/review/**")
+                                new AntPathRequestMatcher("/review/**"),
+                                new AntPathRequestMatcher("/cart/**")
                         ).permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/articles"))
+                .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .csrf(AbstractHttpConfigurer::disable)
@@ -53,8 +56,8 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http,
-                                                       BCryptPasswordEncoder bCryptPasswordEncoder,
-                                                       UserDetailService userDetailService) throws Exception {
+                       BCryptPasswordEncoder bCryptPasswordEncoder,
+                       UserDetailService userDetailService) throws Exception {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailService);
         authProvider.setPasswordEncoder(bCryptPasswordEncoder);
