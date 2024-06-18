@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
           rel="stylesheet"
   />
   <title>수강신청</title>
@@ -15,6 +15,7 @@
 </head>
 <body>
 <div class="container">
+  <!-- 기존 코드 유지 -->
   <div class="box1">
     <div class="wbox mainMenu">
       <div>
@@ -71,15 +72,16 @@
             <div class="lectureEnrollname">과목명</div>
             <div class="teacherEnrollname">강사명</div>
             <div class="enrollPrice">
-              <div>취미반</div>
+              <div><input type="checkbox" class="hobbyCheckbox" /> 취미반</div>
               <div>160,000</div>
             </div>
             <div class="enrollPrice">
-              <div>입시반</div>
+              <div><input type="checkbox" class="examCheckbox" /> 입시반</div>
               <div>200,000</div>
             </div>
           </div>
         </div>
+        <!-- 강의 정보가 여러 개일 경우 반복 -->
         <div>
           <div class="lectureEnrollimg"></div>
           <div class="lectureEnrollInfo">
@@ -87,15 +89,17 @@
             <div class="lectureEnrollname">과목명</div>
             <div class="teacherEnrollname">강사명</div>
             <div class="enrollPrice">
-              <div>취미반</div>
+              <div><input type="checkbox" class="hobbyCheckbox" /> 취미반</div>
               <div>160,000</div>
             </div>
             <div class="enrollPrice">
-              <div>입시반</div>
+              <div><input type="checkbox" class="examCheckbox" /> 입시반</div>
               <div>200,000</div>
             </div>
           </div>
         </div>
+        <!-- 필요한 만큼 추가 -->
+
         <div>
           <div class="lectureEnrollimg"></div>
           <div class="lectureEnrollInfo">
@@ -103,15 +107,16 @@
             <div class="lectureEnrollname">과목명</div>
             <div class="teacherEnrollname">강사명</div>
             <div class="enrollPrice">
-              <div>취미반</div>
+              <div><input type="checkbox" class="hobbyCheckbox" /> 취미반</div>
               <div>160,000</div>
             </div>
             <div class="enrollPrice">
-              <div>입시반</div>
+              <div><input type="checkbox" class="examCheckbox" /> 입시반</div>
               <div>200,000</div>
             </div>
           </div>
         </div>
+
         <div>
           <div class="lectureEnrollimg"></div>
           <div class="lectureEnrollInfo">
@@ -119,31 +124,19 @@
             <div class="lectureEnrollname">과목명</div>
             <div class="teacherEnrollname">강사명</div>
             <div class="enrollPrice">
-              <div>취미반</div>
+              <div><input type="checkbox" class="hobbyCheckbox" /> 취미반</div>
               <div>160,000</div>
             </div>
             <div class="enrollPrice">
-              <div>입시반</div>
+              <div><input type="checkbox" class="examCheckbox" /> 입시반</div>
               <div>200,000</div>
             </div>
           </div>
         </div>
-        <div>
-          <div class="lectureEnrollimg"></div>
-          <div class="lectureEnrollInfo">
-            <div class="cartEnrollBtn">장바구니 담기</div>
-            <div class="lectureEnrollname">과목명</div>
-            <div class="teacherEnrollname">강사명</div>
-            <div class="enrollPrice">
-              <div>취미반</div>
-              <div>160,000</div>
-            </div>
-            <div class="enrollPrice">
-              <div>입시반</div>
-              <div>200,000</div>
-            </div>
-          </div>
-        </div>
+
+      </div>
+      <div class="moveToCartBtnContainer">
+        <a href="cart.html" class="moveToCartBtn">장바구니로 이동</a>
       </div>
     </div>
   </div>
