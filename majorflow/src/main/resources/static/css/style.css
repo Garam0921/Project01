@@ -120,7 +120,7 @@
   font-size: 30px;
   font-weight: 500;
   position: absolute;
-  bottom: -500px;
+  bottom: -480px;
   left: 0px;
   transform: translateX(-100%);
   opacity: 0;
@@ -843,14 +843,18 @@ body {
   justify-content: space-between;
 }
 
-.cartBox2, .cartBox3, .cartBox4-1, .cartBox4-2 {
+.cartBox2,
+.cartBox3,
+.cartBox4-1,
+.cartBox4-2 {
   flex: 1;
   border: none;
   background-color: transparent;
   text-align: center;
 }
 
-.cartBox3, .cartBox4-2 {
+.cartBox3,
+.cartBox4-2 {
   border-left: 1px solid #888;
 }
 
@@ -1326,8 +1330,6 @@ body {
 
 /* 로그인 화면 */
 
-
-
 .loginBody {
   display: flex;
   justify-content: center;
@@ -1466,7 +1468,6 @@ body {
   display: none;
 }
 
-
 /* 비밀번호 재설정 팝업창 스타일 */
 .modal {
   display: none;
@@ -1478,20 +1479,17 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.75);
-  animation: fadeIn 0.5s ease-in-out;
 }
 
 .modal-content {
-  background-color: #222;
+  background-color: #111;
   margin: 15% auto;
   padding: 20px;
-  border: none;
+  border: 1px solid #888;
   width: 80%;
   max-width: 500px;
-  border-radius: 20px;
+  border-radius: 10px;
   color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.5s ease-in-out;
 }
 
 .close-btn {
@@ -1499,7 +1497,6 @@ body {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  transition: color 0.3s;
 }
 
 .close-btn:hover,
@@ -1517,50 +1514,33 @@ body {
 .reset-passwordBx input {
   position: relative;
   width: 100%;
-  padding: 15px 20px;
+  padding: 20px 30px;
   background: transparent;
   border: 2px solid #fff;
-  border-radius: 10px;
-  font-size: 1.2em;
+  border-radius: 40px;
+  font-size: 1.5em;
   color: #fff;
   box-shadow: none;
   outline: none;
   margin-top: 20px;
-  transition: border-color 0.3s, background-color 0.3s;
 }
 
 .reset-passwordBx input::placeholder {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.reset-passwordBx input:focus {
-  border-color: #4caf50;
-  background-color: rgba(76, 175, 80, 0.1);
-}
-
 .reset-passwordBx input[type="submit"] {
-  width: 100%;
-  padding: 15px;
+  width: 50%;
+  padding: 10px;
   background: rgb(94, 94, 94);
   border: none;
   cursor: pointer;
   font-size: 1.2em;
-  transition: background 0.3s, transform 0.2s;
-  margin-top: 20px;
+  transition: 0.3s;
+  margin: 20px auto;
+  display: block;
 }
 
 .reset-passwordBx input[type="submit"]:hover {
   background: rgb(51, 51, 51);
-  transform: scale(1.05);
-}
-
-/* 모달 애니메이션 */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
 }
