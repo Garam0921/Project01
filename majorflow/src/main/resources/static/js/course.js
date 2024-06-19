@@ -23,14 +23,22 @@ function displayLectures(lectureData) {
 
       // 이미지 태그 추가
       const imgElement = document.createElement("img");
-      imgElement.src = "/img/전체강좌_기타.jpg"; // 강좌 이미지 경로 수정 필요
+      imgElement.src = "/img/전체강좌_기타.jpg";
       imgElement.classList.add("allCourseClickImg");
       allCourseClick.appendChild(imgElement);
 
-      const lectureName = document.createElement("p");
-      lectureName.textContent = data.lectureName;
+      // 텍스트 추가
+      const courseText = document.createElement("div");
+      courseText.classList.add("courseText");
+      courseText.textContent = "기타"; // 기본 텍스트 설정
+      allCourseClick.appendChild(courseText);
 
-      allCourseClick.appendChild(lectureName);
+      // 상세 텍스트 추가
+      const detailedText = document.createElement("div");
+      detailedText.classList.add("detailedText");
+      detailedText.textContent = "초보부터 고수까지\n1:1 맞춤교육"; // 줄바꿈 포함한 상세 텍스트 설정
+      courseText.appendChild(detailedText);
+
       allCourse.appendChild(allCourseClick);
 
       allCourseClick.addEventListener("click", () => {

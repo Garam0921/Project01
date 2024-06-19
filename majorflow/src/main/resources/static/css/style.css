@@ -449,6 +449,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
+  position: relative; /* 텍스트 위치를 위해 relative 설정 */
 }
 
 .allCourseClickImg {
@@ -462,6 +463,20 @@ body {
 
 .allCourseClickImg:hover {
   transform: scale(1.05); /* 호버 시 확대 */
+}
+
+.courseText {
+  position: absolute;
+  bottom: 10px; /* 이미지 아래에서 10px 위치 */
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬 */
+  color: white; /* 텍스트 색상 흰색 */
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 효과 */
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  padding: 5px 10px;
+  border-radius: 10px; /* 둥근 모서리 */
 }
 
 .backBtn {
@@ -540,7 +555,6 @@ body {
   display: flex;
   justify-content: end;
 }
-
 
 /*공지사항*/
 
