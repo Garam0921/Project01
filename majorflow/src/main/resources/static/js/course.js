@@ -15,23 +15,27 @@ function displayLectures(lectureData) {
   console.log(lectureData.length);
   if (lectureData.length > 0) {
     const allCourse = document.querySelector(".allCourse");
+    allCourse.innerHTML = ""; // 기존 강좌 초기화
+
     lectureData.forEach((data) => {
       const allCourseClick = document.createElement("div");
       allCourseClick.classList.add("allCourseClick");
-      const allCourseClickImg = document.createElement("div");
-      allCourseClickImg.classList.add("allCourseClickImg");
 
-      allCourseClick.appendChild(allCourseClickImg);
+      // 이미지 태그 추가
+      const imgElement = document.createElement("img");
+      imgElement.src = "/img/전체강좌_기타.jpg"; // 강좌 이미지 경로 수정 필요
+      imgElement.classList.add("allCourseClickImg");
+      allCourseClick.appendChild(imgElement);
+
       const lectureName = document.createElement("p");
       lectureName.textContent = data.lectureName;
 
       allCourseClick.appendChild(lectureName);
       allCourse.appendChild(allCourseClick);
 
-      allCourseClickImg.addEventListener("click", () => {
+      allCourseClick.addEventListener("click", () => {
         const urlLecture = "http://localhost:8080/lectures/" + data.lectureId;
 
-        //window.location.href = "course.html?lectureId=" + data.lectureId;
         axios
           .get(urlLecture)
           .then((response) => {
@@ -57,10 +61,11 @@ function displayLectures(lectureData) {
 function displayLecture(data) {
   const allCourseDetailBox = document.querySelector(".allCourseDetailBox");
 
-  const detailedBox2 = document.querySelector(".detailedBox2");
+  allCourseDetailBox.innerHTML = ""; // 기존 내용을 초기화
 
   const backBtn = document.createElement("div");
   const detailedBox = document.createElement("div");
+  const detailedBox2 = document.createElement("div");
   const detailedBox2Img = document.createElement("div");
   const detailedBox2Text = document.createElement("div");
   const detailedBox2Text2 = document.createElement("div");
@@ -72,7 +77,6 @@ function displayLecture(data) {
   detailedBox2Text.classList.add("detaildBox2Text");
   detailedBox2Text2.classList.add("detaildBox2Text2");
 
-  //이미지 속성 추가 필요
   detailedBox.textContent = data.lectureName;
   detailedBox2Text.textContent = data.lectureText;
 
@@ -84,7 +88,10 @@ function displayLecture(data) {
   detailedBox2.appendChild(detailedBox2Text2);
 
   backBtn.addEventListener("click", () => {
-    window.location.href = "course.html";
+    document.querySelector(".allCourseBox").classList.remove("hidden");
+    document.querySelector(".tasteCourseBox").classList.add("hidden");
+    document.querySelector(".coursePriceGuideBox").classList.add("hidden");
+    document.querySelector(".allCourseDetailBox").classList.add("hidden");
   });
 }
 
