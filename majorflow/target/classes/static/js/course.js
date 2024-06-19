@@ -15,92 +15,25 @@ function displayLectures(lectureData) {
   console.log(lectureData.length);
   if (lectureData.length > 0) {
     const allCourse = document.querySelector(".allCourse");
-    allCourse.innerHTML = ""; // 기존 강좌 초기화
-
     lectureData.forEach((data) => {
       const allCourseClick = document.createElement("div");
       allCourseClick.classList.add("allCourseClick");
+      const allCourseClickImg = document.createElement("div");
+      allCourseClickImg.classList.add("allCourseClickImg");
 
-      // 이미지 태그 추가
-      const imgElement = document.createElement("img");
-      imgElement.src = "/img/전체강좌_기타.jpg";
-      imgElement.classList.add("allCourseClickImg");
-      allCourseClick.appendChild(imgElement);
+      allCourseClick.appendChild(allCourseClickImg);
+      const lectureName = document.createElement("p");
+      lectureName.classList.add("lectureName");
+      lectureName.textContent = data.lectureName;
 
-      // 텍스트 추가
-      const courseText = document.createElement("div");
-      courseText.classList.add("courseText");
-      courseText.textContent = "기타"; // 기본 텍스트 설정
-      allCourseClick.appendChild(courseText);
-
-      // 상세 텍스트 추가
-      const detailedText = document.createElement("div");
-      detailedText.classList.add("detailedText");
-      detailedText.textContent = "초보부터 고수까지\n1:1 맞춤교육"; // 줄바꿈 포함한 상세 텍스트 설정
-      courseText.appendChild(detailedText);
-
+      allCourseClick.appendChild(lectureName);
       allCourse.appendChild(allCourseClick);
 
-      allCourseClick.addEventListener("click", () => {
-        const urlLecture = "http://localhost:8080/lectures/" + data.lectureId;
-
-        axios
-          .get(urlLecture)
-          .then((response) => {
-            console.log("데이터: ", response.data);
-            displayLecture(response.data);
-
-            if (response.status == 200) {
-              document
-                .querySelector(".allCourseDetailBox")
-                .classList.remove("hidden");
-              document.querySelector(".tasteCourseBox").classList.add("hidden");
-              document.querySelector(".allCourseBox").classList.add("hidden");
-            }
-          })
-          .catch((error) => {
-            console.log("에러 발생: ", error);
-          });
+      allCourseClickImg.addEventListener("click", () => {
+        window.location.href = "lecture.html?lectureId=" + data.lectureId;
       });
     });
   }
-}
-
-function displayLecture(data) {
-  const allCourseDetailBox = document.querySelector(".allCourseDetailBox");
-
-  allCourseDetailBox.innerHTML = ""; // 기존 내용을 초기화
-
-  const backBtn = document.createElement("div");
-  const detailedBox = document.createElement("div");
-  const detailedBox2 = document.createElement("div");
-  const detailedBox2Img = document.createElement("div");
-  const detailedBox2Text = document.createElement("div");
-  const detailedBox2Text2 = document.createElement("div");
-
-  backBtn.classList.add("backBtn");
-  detailedBox.classList.add("detailedBox");
-  detailedBox2.classList.add("detailedBox2");
-  detailedBox2Img.classList.add("detailedBox2Img");
-  detailedBox2Text.classList.add("detaildBox2Text");
-  detailedBox2Text2.classList.add("detaildBox2Text2");
-
-  detailedBox.textContent = data.lectureName;
-  detailedBox2Text.textContent = data.lectureText;
-
-  allCourseDetailBox.appendChild(backBtn);
-  allCourseDetailBox.appendChild(detailedBox);
-  allCourseDetailBox.appendChild(detailedBox2);
-  detailedBox2.appendChild(detailedBox2Img);
-  detailedBox2.appendChild(detailedBox2Text);
-  detailedBox2.appendChild(detailedBox2Text2);
-
-  backBtn.addEventListener("click", () => {
-    document.querySelector(".allCourseBox").classList.remove("hidden");
-    document.querySelector(".tasteCourseBox").classList.add("hidden");
-    document.querySelector(".coursePriceGuideBox").classList.add("hidden");
-    document.querySelector(".allCourseDetailBox").classList.add("hidden");
-  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

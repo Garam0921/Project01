@@ -36,7 +36,7 @@
   letter-spacing: 40px;
   margin: 30px;
   left: 380px;
-  bottom: 20px;
+  bottom: -20px;
 }
 .mainTitle2 {
   width: 100%;
@@ -46,7 +46,7 @@
   letter-spacing: 40px;
   margin: 30px;
   left: 1050px;
-  top: 80px;
+  top: 130px;
 }
 
 .circleRing {
@@ -187,11 +187,11 @@
 .loginBtn {
   color: white;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 25px;
   letter-spacing: 5px;
   line-height: 30px;
   bottom: 360px;
-  left: 900px;
+  left: 910px;
 }
 
 .loginBtn:hover {
@@ -230,7 +230,7 @@ body {
 /* 상단 메뉴바 설정*/
 .mainMenu {
   display: grid;
-  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-columns: 1.5fr 5.5fr 3fr;
   justify-content: center;
   align-items: center;
   height: 50px;
@@ -248,6 +248,14 @@ body {
 .rightMenu {
   padding: 10px;
   cursor: pointer;
+}
+
+.menuReviewBtn {
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  padding: 5px 20px 5px 20px;
 }
 
 .mainMenu > div > span:hover {
@@ -414,7 +422,6 @@ body {
   line-height: 40px;
 }
 
-
 /*수강안내*/
 
 .courseBox,
@@ -436,54 +443,35 @@ body {
   font-weight: bold;
 }
 
-.allCourse {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2열 그리드 */
-  grid-template-rows: auto auto; /* 2행 그리드 */
-  gap: 20px;
-  justify-items: center; /* 가운데 정렬 */
+.lectureName {
+  font-size: 25px;
+  margin: 0 0 0 30px;
 }
 
+.allCourse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 .allCourseClick {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
-  position: relative; /* 텍스트 위치를 위해 relative 설정 */
+  margin: 20px 0 20px 0;
 }
 
 .allCourseClickImg {
+  background-color: gray;
   width: 500px;
   height: 300px;
-  border-radius: 15px; /* 모서리를 둥글게 */
-  border: 2px solid #ddd; /* 테두리 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  transition: transform 0.2s; /* 호버 시 애니메이션 */
-}
-
-.allCourseClickImg:hover {
-  transform: scale(1.05); /* 호버 시 확대 */
-}
-
-.courseText {
-  position: absolute;
-  bottom: 10px; /* 이미지 아래에서 10px 위치 */
-  left: 50%;
-  transform: translateX(-50%); /* 가운데 정렬 */
-  color: white; /* 텍스트 색상 흰색 */
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 그림자 효과 */
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
-  padding: 5px 10px;
-  border-radius: 10px; /* 둥근 모서리 */
+  margin: 30px 30px 10px 30px;
 }
 
 .backBtn {
-  background-color: gray;
   width: 50px;
   height: 50px;
   margin: 30px 0px 10px 0px;
+}
+
+.backBtnImg {
+  width: inherit;
 }
 
 .detailedBox2 {
@@ -555,7 +543,6 @@ body {
   display: flex;
   justify-content: end;
 }
-
 /*공지사항*/
 
 .noticeBox2 {
@@ -838,57 +825,6 @@ body {
   background-color: #333;
   transform: scale(1.05);
 }
-
-/* 체크박스 스타일 */
-input[type="checkbox"] {
-  display: none; /* 기본 체크박스 숨기기 */
-}
-
-input[type="checkbox"] + label {
-  position: relative;
-  padding-left: 35px; /* 체크박스 크기에 맞춰 패딩 조정 */
-  cursor: pointer;
-  display: inline-block;
-  color: #333;
-  font-size: 18px;
-  line-height: 1.2;
-}
-
-input[type="checkbox"] + label:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px; /* 체크박스 크기 */
-  height: 20px; /* 체크박스 크기 */
-  border: 2px solid #333;
-  border-radius: 5px; /* 둥근 모서리 */
-  background: #fff;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-input[type="checkbox"]:checked + label:before {
-  background: #333;
-  border-color: #333;
-}
-
-input[type="checkbox"]:checked + label:after {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-  width: 5px;
-  height: 10px;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-}
-
-input[type="checkbox"] + label:hover:before {
-  border-color: #555;
-}
-
 
 /* 장바구니 */
 .box1Cart {
@@ -1545,10 +1481,6 @@ input[type="checkbox"] + label:hover:before {
   background: rgb(51, 51, 51);
 }
 
-.hidden {
-  display: none;
-}
-
 /* 비밀번호 재설정 팝업창 스타일 */
 .modal {
   display: none;
@@ -1624,4 +1556,118 @@ input[type="checkbox"] + label:hover:before {
 
 .reset-passwordBx input[type="submit"]:hover {
   background: rgb(51, 51, 51);
+}
+
+/* 나의 진도율 페이지 설정 */
+
+.progressTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+  border-bottom: 2px solid black;
+}
+
+.selectSearchBox {
+  display: flex;
+  justify-content: center;
+}
+
+.selectSubjectBtn {
+  height: 50px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 30px 10px;
+  color: gray;
+}
+
+.searchSubjectBtn {
+  height: 50px;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 30px 10px;
+  color: gray;
+}
+
+.searchIcon {
+  height: 50px;
+  width: 50px;
+  margin: 30px 0px;
+  background-color: gray;
+}
+
+.progressTitleBox {
+  display: flex;
+  justify-content: left;
+}
+
+.progressSubjectName {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.progressSubjectInfo {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.progressInfoBox {
+  height: 700px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.progressInfo {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+.progressInfoStudent {
+  font-size: 30px;
+  padding: 0px 10px;
+  margin: 40px;
+  color: black;
+  font-weight: bold;
+}
+
+.progressInfoGraph {
+  height: 50px;
+  width: 700px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 40px;
+  position: relative;
+}
+
+.progressInfoGraphColor {
+  height: 50px;
+  width: 0%;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.hidden {
+  display: none;
 }
