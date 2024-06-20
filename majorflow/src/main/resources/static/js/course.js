@@ -28,7 +28,7 @@ function displayLectures(lectureData) {
 
       const mainText = document.createElement("p");
       mainText.classList.add("mainText");
-      mainText.textContent = "기타";
+      mainText.textContent = data.lectureName;
       textContainer.appendChild(mainText);
 
       const subText = document.createElement("p");
