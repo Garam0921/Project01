@@ -647,10 +647,10 @@ body {
 /* 동영상 모달창 */
 .modal1 {
   position: fixed;
-  top: 30%;
-  left: 30%;
-  width: 100%;
-  height: 100%;
+  top: 40%;
+  left: 35%;
+  width: 850px;
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -660,7 +660,7 @@ body {
   pointer-events: none;
   padding: 20px;
 }
-.modal-content1 {
+.modal1-content {
   width: 800px;
   height: 500px;
   background: grey;
@@ -673,7 +673,7 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
-.modal1.show .modal-content1 {
+.modal1.show .modal1-content {
   opacity: 1;
   transform: scale(1);
 }
@@ -687,7 +687,6 @@ body {
 #modalCloseBtn:hover {
   color: black;
 }
-
 
 
 /*공지사항*/
@@ -874,123 +873,124 @@ body {
 
 /* 수강신청 페이지 설정 */
 .enrollmentTitle {
-  font-size: 40px;
-  font-weight: bold;
-  display: flex;
-  justify-content: left;
-  padding: 30px 0px;
-  margin-top: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    padding: 30px 0px;
+    margin-top: 30px;
 }
 
 .enrollment {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .enrollment > div {
-  border: 2px solid black;
-  border-radius: 5px;
-  margin: 0px 0px 30px 0px;
-  display: flex;
-  flex-basis: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0px 0px 30px 0px;
+    display: flex;
+    flex-basis: 100%;
 }
 
 .lectureEnrollInfo {
-  width: 810px;
-  margin: 30px;
+    width: 810px;
+    margin: 30px;
 }
 
 .lectureEnrollimg {
-  background-color: gray;
-  height: 300px;
-  width: 400px;
-  border-radius: 10px;
-  margin: 30px;
+    background-color: gray;
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
+    margin: 30px;
+    overflow: hidden; /* 이미지가 박스를 넘치지 않게 */
 }
 
 .lectureEnrollname {
-  font-size: 30px;
-  padding: 5px 0px 5px 0px;
-  margin: 30px 0px 0px 0px;
+    font-size: 30px;
+    padding: 5px 0px 5px 0px;
+    margin: 30px 0px 0px 0px;
 }
 
 .teacherEnrollname {
-  font-size: 20px;
-  padding: 5px 0px 5px 0px;
-  margin: 0px 0px 30px 0px;
+    font-size: 20px;
+    padding: 5px 0px 5px 0px;
+    margin: 0px 0px 30px 0px;
 }
 
 .enrollPrice > div {
-  display: inline-block;
-  padding: 20px 40px 20px 0px;
-  margin-right: 50px;
+    display: inline-block;
+    padding: 20px 40px 20px 0px;
+    margin-right: 50px;
 }
 
 .cartEnrollBtn {
-  height: 50px;
-  width: 150px;
-  border: 2px solid black;
-  border-radius: 10px;
-  text-align: center;
-  line-height: 45px;
-  float: right;
-  margin: 5px 0px 5px 0px;
+    height: 50px;
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 45px;
+    float: right;
+    margin: 5px 0px 5px 0px;
 }
 
 .cartEnrollBtn:hover {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
 }
 
 .moveToCartBtnContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .moveToCartBtn {
-  background-color: #000;
-  color: #fff;
-  font-size: 20px;
-  padding: 15px 30px;
-  border-radius: 10px;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .moveToCartBtn:hover {
-  background-color: #333;
-  transform: scale(1.05);
+    background-color: #333;
+    transform: scale(1.05);
 }
 
 /* 체크박스 스타일링 */
 .styled-checkbox {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid black;
-  border-radius: 4px;
-  margin-right: 10px;
-  cursor: pointer;
-  position: relative;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
 }
 
 .styled-checkbox:checked {
-  background-color: black;
-  border: 2px solid black;
+    background-color: black;
+    border: 2px solid black;
 }
 
 .styled-checkbox:checked::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 6px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 /* 장바구니 */
