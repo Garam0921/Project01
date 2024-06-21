@@ -83,42 +83,36 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("coursePriceGuideBtn not found");
   }
-});
 
-document.querySelectorAll(".subMenu > div").forEach((div) => {
-  div.addEventListener("click", () => {
-    document
-      .querySelectorAll(".subMenu > div")
-      .forEach((item) => item.classList.remove("active"));
-
-    // 클릭된 div에 active 클래스 추가
-    div.classList.add("active");
-  });
-});
-
-/* 모달창 */
-document.addEventListener("DOMContentLoaded", function () {
-  const tasteCourseClickAvi = document.getElementsByClassName(
-    "tasteCourseClickAvi"
-  );
+  /* 모달창 */
+  const tasteCourseClickImg = document.querySelectorAll(".tasteCourseClickImg");
   const modal = document.getElementById("courseModal");
   const modalCloseBtn = document.getElementById("modalCloseBtn");
+  const modalVideo = document.getElementById("modalVideo");
 
-  function toggleModal() {
+  function toggleModal(videoUrl) {
+    if (videoUrl) {
+      modalVideo.src = videoUrl;
+    }
     modal.classList.toggle("show");
   }
 
-  for (let i = 0; i < tasteCourseClickAvi.length; i++) {
-    tasteCourseClickAvi[i].addEventListener("click", toggleModal);
-  }
+  tasteCourseClickImg.forEach((item) => {
+    item.addEventListener("click", function () {
+      const videoUrl = this.getAttribute("data-video-url");
+      toggleModal(videoUrl);
+    });
+  });
 
   modalCloseBtn.addEventListener("click", function () {
     toggleModal();
+    modalVideo.src = ""; // 모달 닫을 때 비디오 정지
   });
 
   window.addEventListener("click", function (event) {
     if (event.target === modal) {
       toggleModal();
+      modalVideo.src = ""; // 모달 닫을 때 비디오 정지
     }
   });
 });
