@@ -154,7 +154,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
     if (confirm("로그아웃하시겠습니까?")) {
       axios
-        .post("http://localhost:8080/user/logout", {}, { withCredentials: true })
+        .post(
+          "http://localhost:8080/user/logout",
+          {},
+          { withCredentials: true }
+        )
         .then((response) => {
           console.log("데이터: ", response);
           if (response.status == 200) {
