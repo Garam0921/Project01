@@ -51,9 +51,9 @@ async function checkDuplicateId() {
         console.log("Checking ID:", userId);
         const response = await axios.post("http://localhost:8080/user/check-id", { userId });
         console.log("Response received:", response);
-        const exists = response.data.exists;
+        const exists = response.data.exists; // 서버 응답이 { exists: true/false } 형식이어야 함
         if (exists) {
-            resultElement.innerText = "이미 사용 중인 아이디입니다.";
+            resultElement.innerText = "이미 등록된 아이디 입니다.";
             resultElement.style.color = "red";
         } else {
             resultElement.innerText = "사용 가능한 아이디입니다.";
@@ -61,6 +61,8 @@ async function checkDuplicateId() {
         }
     } catch (error) {
         console.error("Error checking ID:", error);
+        resultElement.innerText = "서버 오류로 아이디를 확인할 수 없습니다.";
+        resultElement.style.color = "red";
     }
 }
 
@@ -80,9 +82,9 @@ async function checkDuplicateNickname() {
         console.log("Checking Nickname:", nickname);
         const response = await axios.post("http://localhost:8080/user/check-nickname", { nickname });
         console.log("Response received:", response);
-        const exists = response.data.exists;
+        const exists = response.data.exists; // 서버 응답이 { exists: true/false } 형식이어야 함
         if (exists) {
-            resultElement.innerText = "이미 사용 중인 닉네임입니다.";
+            resultElement.innerText = "이미 등록된 닉네임 입니다.";
             resultElement.style.color = "red";
         } else {
             resultElement.innerText = "사용 가능한 닉네임입니다.";
@@ -90,6 +92,8 @@ async function checkDuplicateNickname() {
         }
     } catch (error) {
         console.error("Error checking Nickname:", error);
+        resultElement.innerText = "서버 오류로 닉네임을 확인할 수 없습니다.";
+        resultElement.style.color = "red";
     }
 }
 
