@@ -24,7 +24,8 @@ document.querySelector(".sign-inBx").addEventListener("click", () => {
       console.log("데이터: ", response);
       sessionCurrent();
       alert("로그인이 완료되었습니다");
-      window.location.href = "index.html";
+      const previousPage = document.referrer;
+      window.location.href = previousPage ? previousPage : "index.html";
     })
     .catch((error) => {
       console.log("에러 발생: ", error);
