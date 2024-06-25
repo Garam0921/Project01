@@ -2,6 +2,11 @@ const urlLogout = "http://localhost:8080/user/logout";
 const urlLectures = "http://localhost:8080/lectures";
 const urlMypage = "http://localhost:8080/user";
 
+// 모달 엘리먼트 가져오기
+const modal = document.getElementById("videoModal");
+const modalVideo = document.getElementById("modalVideo");
+const span = document.getElementsByClassName("close")[0];
+
 document.querySelector(".progressBtn").addEventListener("click", () => {
   document.querySelector(".myLectureBox").classList.add("hidden");
   document.querySelector(".progressBox").classList.remove("hidden");
@@ -190,6 +195,11 @@ function StudyMylectures(items, user) {
         progressNum += 1;
         progressGraph.textContent = "진도율 " + progressNum + "%";
       }
+
+      // 모달 열기 및 비디오 재생
+      modal.style.display = "block";
+      modalVideo.src = "https://storage.googleapis.com/teamproject1-majorflow/%20video/%EC%98%A4%EA%B2%B8%EB%B9%84-%ED%94%BC%EC%95%84%EB%85%B8.mp4";
+      modalVideo.play();
     });
 
     progressInfoBox.appendChild(progressImgBox);
@@ -204,6 +214,20 @@ function StudyMylectures(items, user) {
 
     progressInfoBox.appendChild(progressInfo1);
   });
+}
+
+// 모달 닫기
+span.onclick = function() {
+  modal.style.display = "none";
+  modalVideo.pause();
+}
+
+// 모달 외부 클릭 시 닫기
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    modalVideo.pause();
+  }
 }
 
 document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
