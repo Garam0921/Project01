@@ -1234,7 +1234,7 @@ body {
   padding: 20px 0;
 }
 
-/* 나의 진도율 페이지 설정 */
+/* new 수강신청 현황 */
 
 .myLectureBoxGrid {
   display: grid;
@@ -1424,7 +1424,7 @@ body {
   margin: 50px;
 }
 
-/* 성적확인 페이지 설정 */
+/* 강의실 */
 .gradeTitle {
   font-size: 40px;
   font-weight: bold;
