@@ -98,3 +98,38 @@ document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
 });
 
 sessionCurrent();
+
+// 댓글달기 모달 기능 추가
+const commentBtns = document.querySelectorAll(".noticeBox5-1");
+const modal = document.getElementById("commentModal");
+const closeBtn = document.querySelector(".close-btn");
+
+commentBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modal.style.display = "block";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.classList.add("hidden");
+    modal.style.display = "none";
+  }
+});
+
+document.getElementById("commentSubmit").addEventListener("click", () => {
+  const comment = document.getElementById("commentInput").value;
+  if (comment) {
+    alert("댓글이 등록되었습니다: " + comment);
+    modal.classList.add("hidden");
+    modal.style.display = "none";
+  } else {
+    alert("댓글을 입력하세요.");
+  }
+});
