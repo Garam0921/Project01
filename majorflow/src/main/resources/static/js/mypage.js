@@ -210,8 +210,12 @@ function StudyMylectures(items, user) {
 
       // 모달 열기 및 비디오 재생
       modal.style.display = "block";
+      modalVideo.poster = "/img/오겸비선생님 썸네일.png"; // 썸네일 이미지 설정
       modalVideo.src = "https://storage.googleapis.com/teamproject1-majorflow/%20video/%EC%98%A4%EA%B2%B8%EB%B9%84-%ED%94%BC%EC%95%84%EB%85%B8.mp4";
-      modalVideo.play();
+      modalVideo.load();
+      setTimeout(() => {
+        modalVideo.play();
+      }, 2000); // 2초 후에 비디오 재생
     });
 
     progressInfoBox.appendChild(progressImgBox);
@@ -293,4 +297,5 @@ document.addEventListener('DOMContentLoaded', () => {
     img.style.objectFit = 'cover';
     img.style.borderRadius = 'inherit';
   });
+
 });
