@@ -145,6 +145,18 @@ function sessionCurrent() {
       studyLectureBtnBox.appendChild(studyLectureBtn);
       myLectureTitleBox.appendChild(myLectureSubjectName);
     });
+
+    // 이미지 박스에 맞게 이미지 설정
+    const imgSrc = '/img/오겸비선생님 썸네일.png';
+    const myLectureImages = document.querySelectorAll('.myLectureImgBox img');
+
+    myLectureImages.forEach((img) => {
+      img.src = imgSrc;
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = 'inherit';
+    });
   }
 }
 
@@ -214,6 +226,18 @@ function StudyMylectures(items, user) {
 
     progressInfoBox.appendChild(progressInfo1);
   });
+
+  // 이미지 박스에 맞게 이미지 설정
+  const imgSrc = '/img/오겸비선생님 썸네일.png';
+  const progressImages = document.querySelectorAll('.progressImg');
+
+  progressImages.forEach((img) => {
+    img.src = imgSrc;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = 'inherit';
+  });
 }
 
 // 모달 닫기
@@ -246,4 +270,27 @@ document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
         console.log("에러 발생: ", error);
       });
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const imgSrc = '/img/오겸비선생님 썸네일.png';
+  const progressImages = document.querySelectorAll('.progressImg');
+
+  progressImages.forEach((img) => {
+    img.src = imgSrc;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = 'inherit';
+  });
+
+  const myLectureImages = document.querySelectorAll('.myLectureImgBox img');
+
+  myLectureImages.forEach((img) => {
+    img.src = imgSrc;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.borderRadius = 'inherit';
+  });
 });
