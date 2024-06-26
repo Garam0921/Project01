@@ -54,10 +54,18 @@ https://storage.googleapis.com/teamproject1-majorflow/%20image/%EB%A7%88%EC%9D%B
 
 
 
-            // 강의실 입장 버튼 클릭 시 강의실 페이지로 이동
+  background-image: url('https://smsmusic.co.kr/default/img/sub_img2.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
-            studyLectureBtn.addEventListener("click", () => {
 
-              document.querySelector(".progressBtn").click();
 
-            });
+.title {
+  /* background-color: black; 배경색 제거 */
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  padding-top: 200px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위해 텍스트 그림자 추가 */
+}
