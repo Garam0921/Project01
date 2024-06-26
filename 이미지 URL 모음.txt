@@ -73,4 +73,18 @@ https://storage.googleapis.com/teamproject1-majorflow/%20image/%EB%A7%88%EC%9D%B
 https://storage.googleapis.com/teamproject1-majorflow/%20image/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80/%ED%94%BC%EC%95%84%EB%85%B8%20%EC%B7%A8%EB%AF%B8%EB%B0%98.png
 
 
+  background-image: url('https://smsmusic.co.kr/default/img/sub_img2.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
+
+
+.title {
+  /* background-color: black; 배경색 제거 */
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  padding-top: 200px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위해 텍스트 그림자 추가 */
+}
