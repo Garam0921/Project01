@@ -122,6 +122,7 @@ function sessionCurrent() {
             studyLectureBtn.textContent = "강의실 입장";
 
             // 강의실 입장 버튼 클릭 시 강의실 페이지로 이동
+
             studyLectureBtn.addEventListener("click", () => {
               document.querySelector(".progressBtn").click();
             });

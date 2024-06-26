@@ -265,7 +265,7 @@ function signupRegister() {
   if (confirm("회원가입 하시겠습니까?")) {
     const data = {
       userId: signupUserId,
-      name: signupName,
+      userName: signupName,
       password: signupPassword,
       birthDate: signupBirthDate,
       phoneNumber: signupPhoneNumber,

@@ -1,4 +1,55 @@
 const urlAdmin = "http://localhost:8080/user/user";
+const urlLectures = "http://localhost:8080/edutech/get";
+
+document.querySelector(".noticeWriteBtn").addEventListener("click", () => {
+  document.querySelector(".noticeWriteBox").classList.remove("hidden");
+  document.querySelector(".adminPageBox").classList.add("hidden");
+});
+
+document.querySelector(".adminPageBtn").addEventListener("click", () => {
+  document.querySelector(".adminPageBox").classList.remove("hidden");
+  document.querySelector(".noticeWriteBox").classList.add("hidden");
+});
+
+sessionCurrent();
+
+function sessionCurrent() {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response);
+      if (response.status == 200 && response.data.userId !== "anonymousUser") {
+        console.log("세션 유지");
+        const userId = response.data.userId;
+        document.querySelector(".menuLoginBtn").classList.add("hidden");
+        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
+      } else {
+        alert("로그인이 필요합니다.");
+        window.location.href = "login.html";
+      }
+    })
+    .catch((error) => {
+      console.log("에러 발생: ", error);
+    });
+}
+
+document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
+  if (confirm("로그아웃하시겠습니까?")) {
+    axios
+      .post(urlLogout, {}, { withCredentials: true })
+      .then((response) => {
+        console.log("데이터: ", response);
+        if (response.status == 200) {
+          alert("로그아웃 되었습니다");
+          document.querySelector(".menuLoginBtn").classList.remove("hidden");
+          document.querySelector(".menuLogoutBtn").classList.add("hidden");
+        }
+      })
+      .catch((error) => {
+        console.log("에러 발생: ", error);
+      });
+  }
+});
 
 axios
   .get(urlAdmin)
@@ -22,7 +73,7 @@ function displayAdmin(data) {
 
     const adminUserName = document.createElement("td");
     adminUserName.classList.add("adminUserName");
-    adminUserName.textContent = userData.username;
+    adminUserName.textContent = userData.name;
 
     const adminUserNickname = document.createElement("td");
     adminUserNickname.classList.add("adminUserNickname");
@@ -52,29 +103,6 @@ function displayAdmin(data) {
     adminUserGenre.classList.add("adminUserGenre");
     adminUserGenre.textContent = userData.genre;
 
-    const adminUserAuthority = document.createElement("td");
-    adminUserAuthority.classList.add("adminUserAuthority");
-
-    // 권한 설정
-
-    const selectElement = document.createElement("select");
-    selectElement.name = `authority-${userData.userId}`;
-
-    const studentOption = document.createElement("option");
-    studentOption.value = "ROLE_USER";
-    studentOption.textContent = "학생";
-    studentOption.selected = userData.authority === "ROLE_USER";
-
-    const teacherOption = document.createElement("option");
-    teacherOption.value = "ROLE_TEACHER";
-    teacherOption.textContent = "선생님";
-    teacherOption.selected = userData.authority === "ROLE_TEACHER";
-
-    selectElement.appendChild(studentOption);
-    selectElement.appendChild(teacherOption);
-
-    adminUserAuthority.appendChild(selectElement);
-
     tr.appendChild(adminUserId);
     tr.appendChild(adminUserName);
     tr.appendChild(adminUserNickname);
@@ -84,25 +112,57 @@ function displayAdmin(data) {
     tr.appendChild(adminUserEmail);
     tr.appendChild(adminUserPhoneNum);
     tr.appendChild(adminUserGenre);
-    tr.appendChild(adminUserAuthority);
     tbody.appendChild(tr);
   });
 }
 
-function updateAuthority(userId, newAuthority) {
-  const updateUrl = `http://localhost:8080/user/update-authority/${userId}`;
+// 강의별 수강중인 학생 목록 가져오기
+axios
+  .get(urlLectures)
+  .then((response) => {
+    console.log("유저 데이터: ", response.data);
+    displayCourseUsers(response.data);
+  })
+  .catch((error) => {
+    console.log("강의 데이터 가져오기 에러 발생: ", error);
+  });
 
-  axios
-    .put(updateUrl, { authority: newAuthority })
-    .then((response) => {
-      console.log("권한 업데이트 성공:", response.data);
-      // 성공적으로 업데이트된 경우에 대한 처리 (예: 메시지 표시 등)
-    })
-    .catch((error) => {
-      console.error("권한 업데이트 실패:", error);
-      // 업데이트 실패에 대한 처리 (예: 오류 메시지 표시 등)
-    });
+function displayCourseUsers(lectureData) {
+  lectureData.forEach((purchasedLecture) => {
+    const lectureName = purchasedLecture.lecture.lectureName;
+    const userId = purchasedLecture.user.userId;
+    const lectureUserName = document.createElement("div");
+    const celloLectureUserName = document.querySelector(
+      ".celloLectureUserName"
+    );
+    const pianoLectureUserName = document.querySelector(
+      ".pianoLectureUserName"
+    );
+    const guitarLectureUserName = document.querySelector(
+      ".guitarLectureUserName"
+    );
+    const drumLectureUserName = document.querySelector(".drumLectureUserName");
+    lectureUserName.textContent = userId;
+
+    if (lectureName == "첼로") {
+      celloLectureUserName.appendChild(lectureUserName);
+    } else if (lectureName == "피아노") {
+      pianoLectureUserName.appendChild(lectureUserName);
+    } else if (lectureName == "기타") {
+      guitarLectureUserName.appendChild(lectureUserName);
+    } else if (lectureName == "드럼") {
+      drumLectureUserName.appendChild(lectureUserName);
+    }
+  });
 }
+document.querySelectorAll(".courseUserGrid").forEach((courseSection) => {
+  courseSection.addEventListener("click", () => {
+    courseSection.classList.toggle("active");
+    const lectureUserList = courseSection.nextElementSibling;
+    lectureUserList.style.display =
+      lectureUserList.style.display === "block" ? "none" : "block";
+  });
+});
 
 /* 유저가 수강중인 강의 보기 모달 */
 
