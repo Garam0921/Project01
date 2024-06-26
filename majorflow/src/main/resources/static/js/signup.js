@@ -2,7 +2,7 @@ const urlSignup = "http://localhost:8080/user/signup";
 const urlCheckId = "http://localhost:8080/user/check-id";
 
 let signupUserId = "";
-let signupName = "";
+let signupUserName = "";
 let signupPassword = "";
 let signupBirthDate = "";
 let signupPhoneNumber = "";
@@ -130,7 +130,7 @@ function register() {
     { id: "userId", message: "아이디는 필수입력 항목입니다." },
     { id: "password", message: "비밀번호는 필수입력 항목입니다." },
     { id: "confirmPassword", message: "비밀번호 확인은 필수입력 항목입니다." },
-    { id: "name", message: "이름은 필수입력 항목입니다." },
+    { id: "userName", message: "이름은 필수입력 항목입니다." },
     { id: "nickname", message: "닉네임은 필수입력 항목입니다." },
     { id: "email", message: "이메일은 필수입력 항목입니다." },
     { id: "phoneNumber", message: "핸드폰 번호는 필수입력 항목입니다." },
@@ -179,9 +179,9 @@ document.querySelector("#userId").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupUserId = e.target.value;
 });
-document.querySelector("#name").addEventListener("change", (e) => {
+document.querySelector("#userName").addEventListener("change", (e) => {
   console.log(e.target.value);
-  signupName = e.target.value;
+  signupUserName = e.target.value;
 });
 document.querySelector("#password").addEventListener("change", (e) => {
   console.log(e.target.value);
@@ -199,6 +199,10 @@ document.querySelector("#roadAddressDetail").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupAddress = e.target.value;
 });
+// document.querySelector(inputGender).addEventListener("change", (e) => {
+//   console.log(e.target.value);
+//   signupGender = e.target.value;
+// });
 document.querySelector("#email").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupEmail = e.target.value;
@@ -207,6 +211,10 @@ document.querySelector("#nickname").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupNickname = e.target.value;
 });
+// document.querySelector(inputGenre).addEventListener("change", (e) => {
+//   console.log(e.target.value);
+//   signupGenre = e.target.value;
+// });
 
 function limitCheckboxSelection() {
   const checkboxes = document.querySelectorAll('input[name="genre"]:checked');
@@ -257,7 +265,7 @@ function signupRegister() {
   if (confirm("회원가입 하시겠습니까?")) {
     const data = {
       userId: signupUserId,
-      name: signupName,
+      userName: signupUserName,
       password: signupPassword,
       birthDate: signupBirthDate,
       phoneNumber: signupPhoneNumber,
