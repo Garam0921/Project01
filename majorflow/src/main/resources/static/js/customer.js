@@ -1,72 +1,149 @@
-const btns = document.querySelectorAll(".noticeBox3-2");
 const urlLogout = "http://localhost:8080/user/logout";
+const urlNotice = "http://localhost:8080/board/getAll";
 
-btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const noticeBox2Item = btn.parentNode;
-    const isActive = noticeBox2Item.classList.contains("active");
+// 공지사항 박스 클릭 이벤트 설정
+function setNoticeBoxEventListeners() {
+  const btns = document.querySelectorAll(".noticeBox3-2");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const noticeBox2Item = btn.parentNode;
+      const isActive = noticeBox2Item.classList.contains("active");
 
-    removeActiveClasses();
+      removeActiveClasses();
 
-    if (!isActive) {
-      noticeBox2Item.classList.add("active");
-    }
+      if (!isActive) {
+        noticeBox2Item.classList.add("active");
+      }
+    });
   });
-});
+}
 
 function removeActiveClasses() {
+  const btns = document.querySelectorAll(".noticeBox3-2");
   btns.forEach((btn) => {
     btn.parentNode.classList.remove("active");
   });
 }
 
+// 서브 메뉴 클릭 이벤트 설정
 document.querySelectorAll(".subMenu > div").forEach((div) => {
   div.addEventListener("click", () => {
     document
       .querySelectorAll(".subMenu > div")
       .forEach((item) => item.classList.remove("active"));
-
-    // 클릭된 div에 active 클래스 추가
     div.classList.add("active");
   });
 });
 
-/*document.querySelector(".noticeBox6").addEventListener("click", () => {
-  document.querySelector(".noticeWriteBox").classList.remove("hidden");
-  document.querySelector(".noticeBox").classList.add("hidden");
-  document.querySelector(".customerInquiryBox").classList.add("hidden");
-  document.querySelector(".inquiryBox1-1").classList.add("hidden");
-});*/
+// 페이지 로드 시 공지사항 데이터 가져오기
+document.addEventListener("DOMContentLoaded", function () {
+  fetchNoticeData();
+  sessionCurrent();
+});
 
-//document.querySelector(".noticeBtn").addEventListener("click", () => {
-//  document.querySelector(".noticeBox").classList.remove("hidden");
-//  document.querySelector(".noticeWriteBox").classList.add("hidden");
-//  document.querySelector(".customerInquiryBox").classList.add("hidden");
-//  document.querySelector(".inquiryBox1-1").classList.add("hidden");
-//});
+function fetchNoticeData() {
+  axios
+    .get(urlNotice)
+    .then(function (response) {
+      console.log("공지사항 데이터:", response.data);
+      response.data.sort(
+        (a, b) => new Date(b.freeBoardTime) - new Date(a.freeBoardTime)
+      );
+      updateNoticeBox(response.data);
+    })
+    .catch(function (error) {
+      console.error("데이터를 가져오는 중 오류 발생:", error);
+      document.querySelector(".noticeContentWrapper").innerHTML =
+        "데이터를 불러오는 데 실패했습니다.";
+    });
+}
 
-//document.querySelector(".customerInquiryBtn").addEventListener("click", () => {
-//  document.querySelector(".customerInquiryBox").classList.remove("hidden");
-//  document.querySelector(".noticeWriteBox").classList.add("hidden");
-//  document.querySelector(".noticeBox").classList.add("hidden");
-//  document.querySelector(".inquiryBox1-1").classList.add("hidden");
-//});
+function updateNoticeBox(data) {
+  const noticeContentWrapper = document.querySelector(".noticeContentWrapper");
+  noticeContentWrapper.innerHTML = ""; // 기존 내용을 지우기 위해 초기화
+  if (data && data.length > 0) {
+    data.forEach((notice) => {
+      // 날짜 형식 변환
+      const date = new Date(notice.freeBoardTime);
+      const formattedDate = `${date.getFullYear()}-${padZero(
+        date.getMonth() + 1
+      )}-${padZero(date.getDate())}`;
 
-//document.querySelector(".customerInquiryBox6").addEventListener("click", () => {
-//  document.querySelector(".inquiryBox1-1").classList.remove("hidden");
-//  document.querySelector(".noticeWriteBox").classList.add("hidden");
-//  document.querySelector(".noticeBox").classList.add("hidden");
-//  document.querySelector(".customerInquiryBox").classList.add("hidden");
-//});
+      // 공지사항 항목 생성
+      const noticeBox2 = document.createElement("div");
+      noticeBox2.classList.add("noticeBox2");
+      noticeBox2.id = "noticeContent";
+
+      const noticeBox3 = document.createElement("div");
+      noticeBox3.classList.add("noticeBox3");
+
+      const noticeTitle = document.createElement("div");
+      noticeTitle.classList.add("noticeBox3-1");
+      noticeTitle.textContent = notice.title;
+
+      const noticeDate = document.createElement("div");
+      noticeDate.classList.add("noticeBox3Date");
+      noticeDate.textContent = formattedDate;
+
+      const noticeBoxLine = document.createElement("div");
+      noticeBoxLine.classList.add("noticeBoxLine");
+
+      const noticeContent = document.createElement("div");
+      noticeContent.classList.add("noticeBox3-4");
+
+      const noticeText = document.createElement("p");
+      noticeText.classList.add("noticeBox4");
+      noticeText.textContent = notice.text;
+
+      const noticeBox5 = document.createElement("div");
+      noticeBox5.classList.add("noticeBox5");
+
+      const commentIcon = document.createElement("img");
+      commentIcon.src = "/img/말풍선.png";
+
+      const commentBtn = document.createElement("div");
+      commentBtn.classList.add("noticeBox5-1");
+      commentBtn.textContent = "댓글달기";
+
+      const toggleBtn = document.createElement("a");
+      toggleBtn.classList.add("noticeBox3-2");
+      toggleBtn.innerHTML =
+        '<span class="noticeBox3-3 open">+</span><span class="noticeBox3-3 close">-</span>';
+
+      noticeBox3.appendChild(noticeTitle);
+      noticeBox3.appendChild(noticeDate);
+      noticeBox2.appendChild(noticeBox3);
+      noticeBox2.appendChild(noticeBoxLine);
+      noticeContent.appendChild(noticeText);
+      noticeBox5.appendChild(commentIcon);
+      noticeBox5.appendChild(commentBtn);
+      noticeContent.appendChild(noticeBox5);
+      noticeBox2.appendChild(noticeContent);
+      noticeBox2.appendChild(toggleBtn);
+
+      noticeContentWrapper.appendChild(noticeBox2);
+    });
+  } else {
+    noticeContentWrapper.innerHTML = "공지사항이 없습니다.";
+  }
+
+  // 공지사항 업데이트 후 이벤트 리스너 재설정
+  setNoticeBoxEventListeners();
+  setCommentModalEventListeners();
+}
+
+// 날짜가 한 자리 수일 경우 앞에 0을 붙이는 함수
+function padZero(num) {
+  return num < 10 ? `0${num}` : num;
+}
 
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
-      console.log("데이터: ", response);
+      console.log("세션 데이터: ", response.data);
       if (response.status == 200 && response.data.userId !== "anonymousUser") {
         console.log("세션 유지");
-        const userId = response.data.userId;
         document.querySelector(".menuLoginBtn").classList.add("hidden");
         document.querySelector(".menuLogoutBtn").classList.remove("hidden");
       } else {
@@ -75,63 +152,93 @@ function sessionCurrent() {
       }
     })
     .catch((error) => {
-      console.log("로그인 안됨");
+      console.log("로그인 안됨:", error);
     });
 }
 
+function openModal(message) {
+  const alertModal = document.getElementById("myAlertModal");
+  const alertModalMessage = document.getElementById("alertModalMessage");
+  alertModalMessage.textContent = message;
+  alertModal.style.display = "block";
+}
+
+function closeModal() {
+  const alertModal = document.getElementById("myAlertModal");
+  alertModal.style.display = "none";
+}
+
+// 로그아웃 버튼 클릭 시 확인 모달 열기
 document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
-  if (confirm("로그아웃하시겠습니까?")) {
-    axios
-      .post(urlLogout, {}, { withCredentials: true })
-      .then((response) => {
-        console.log("데이터: ", response);
-        if (response.status == 200) {
-          alert("로그아웃 되었습니다");
+  openModal("로그아웃하시겠습니까?");
+});
+
+// 모달 내 확인 버튼 클릭 시 로그아웃 처리
+document.getElementById("alertConfirm").addEventListener("click", () => {
+  axios
+    .post(urlLogout, {}, { withCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response);
+      if (response.status == 200) {
+        openModal("로그아웃 되었습니다");
+        setTimeout(() => {
+          closeModal();
+          // 로그아웃 성공 후의 추가 동작
           document.querySelector(".menuLoginBtn").classList.remove("hidden");
           document.querySelector(".menuLogoutBtn").classList.add("hidden");
-        }
-      })
-      .catch((error) => {
-        console.log("에러 발생: ", error);
-      });
-  }
+          window.location.href = "login.html"; // 로그인 페이지로 이동
+        }, 2000); // 2초 후 모달 닫기
+      }
+    })
+    .catch((error) => {
+      console.log("에러 발생: ", error);
+      alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
+    });
+});
+// 모달 내 취소 버튼 클릭 시 모달 닫기
+document.querySelector(".alertClose").addEventListener("click", () => {
+  closeModal();
 });
 
 sessionCurrent();
 
-// 댓글달기 모달 기능 추가
-const commentBtns = document.querySelectorAll(".noticeBox5-1");
-const modal = document.getElementById("commentModal");
-const closeBtn = document.querySelector(".close-btn");
+function setCommentModalEventListeners() {
+  const commentBtns = document.querySelectorAll(".noticeBox5-1");
+  const modal = document.getElementById("commentModal");
+  const closeBtn = document.querySelector(".close-btn");
 
-commentBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
-    modal.classList.remove("hidden");
-    modal.style.display = "block";
+  commentBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
+      modal.classList.remove("hidden");
+      modal.style.display = "block";
+    });
   });
-});
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.add("hidden");
-  modal.style.display = "none";
-});
-
-window.addEventListener("click", (event) => {
-  if (event.target == modal) {
+  closeBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
     modal.style.display = "none";
-  }
-});
+  });
 
-document.getElementById("commentSubmit").addEventListener("click", () => {
-  const comment = document.getElementById("commentInput").value;
-  if (comment) {
-    alert("댓글이 등록되었습니다: " + comment);
-    document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
-    modal.classList.add("hidden");
-    modal.style.display = "none";
-  } else {
-    alert("댓글을 입력하세요.");
-  }
-});
+  window.addEventListener("click", (event) => {
+    if (event.target == modal) {
+      modal.classList.add("hidden");
+      modal.style.display = "none";
+    }
+  });
+
+  document.getElementById("commentSubmit").addEventListener("click", () => {
+    const comment = document.getElementById("commentInput").value;
+    if (comment) {
+      alert("댓글이 등록되었습니다: " + comment);
+      document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
+      modal.classList.add("hidden");
+      modal.style.display = "none";
+    } else {
+      alert("댓글을 입력하세요.");
+    }
+  });
+}
+
+// 초기 모달 이벤트 리스너 설정
+setCommentModalEventListeners();

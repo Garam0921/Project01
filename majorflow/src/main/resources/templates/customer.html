@@ -19,7 +19,7 @@
     <div class="box1">
       <div class="wbox mainMenu">
         <div>
-          <a href="index.html"><img src="/img/로고.png" class="logo" /></a>
+          <a href="index.html"><img src="/img/로고3.png" class="logo" /></a>
         </div>
         <div>
           <span class="centerMenu"><a href="about.html">학원소개</a></span>
@@ -51,28 +51,12 @@
     <div class="box2">
       <div class="wbox noticeBox">
         <div class="noticeBox1">공지사항</div>
-        <div class="noticeBox2">
+        <div class="noticeContentWrapper">
+          <!--
+        <div class="noticeBox2" id="noticeContent">
           <div class="noticeBox3">
             <div class="noticeBox3-1">공지 제목</div>
-            <div class="noticeBox3-1">작성일자</div>
-          </div>
-          <div class="noticeBoxLine"></div>
-          <div class="noticeBox3-4">
-            <p class="noticeBox4">공지내용</p>
-            <div class="noticeBox5">
-              <img src="/img/말풍선.png" />
-              <div class="noticeBox5-1">댓글달기</div>
-            </div>
-          </div>
-          <a class="noticeBox3-2">
-            <span class="noticeBox3-3 open">+</span>
-            <span class="noticeBox3-3 close">-</span>
-          </a>
-        </div>
-        <div class="noticeBox2">
-          <div class="noticeBox3">
-            <div class="noticeBox3-1">공지 제목</div>
-            <div class="noticeBox3-1">작성일자</div>
+            <div class="noticeBox3Date">작성일자</div>
           </div>
           <div class="noticeBoxLine"></div>
           <div class="noticeBox3-4">
@@ -88,8 +72,21 @@
           </a>
         </div>
       </div>
+          -->
+        </div>
+      </div>
       <!-- 공지사항 등록 부분 제거 -->
       <!-- 1:1문의 등록 부분 제거-->
+
+      <div id="myAlertModal" class="alertModal">
+        <div class="alertModal-content">
+          <p id="alertModalMessage"></p>
+          <div class="alertModalBtn">
+            <button id="alertConfirm">확인</button>
+            <button class="alertClose">취소</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="footer">
       <div class="footer-content">
@@ -97,7 +94,8 @@
           <a href="https://github.com/afoisl/Spring/tree/main/majorflow" target="_blank">
             <div class="footer-circle git"></div>
           </a>
-          <a href="https://www.figma.com/design/9zUur1Qqs19KoHCF75tKWP/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=0-1" target="_blank">
+          <a href="https://www.figma.com/design/9zUur1Qqs19KoHCF75tKWP/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=0-1"
+            target="_blank">
             <div class="footer-circle figma"></div>
           </a>
         </div>
