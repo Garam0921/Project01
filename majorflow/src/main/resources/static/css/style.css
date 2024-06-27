@@ -173,7 +173,7 @@
   font-size: 30px;
   font-weight: 500;
   position: absolute;
-  bottom: -500px;
+  bottom: -480px;
   left: 0px;
   transform: translateX(-100%);
   opacity: 0;
@@ -1551,7 +1551,7 @@ body {
 .reviewBox {
   width: 100%;
   height: 300px;
-  background-color: #d5d7d8;
+  background-color: #fff;
 }
 .reviewBox2-content {
   width: 100%;

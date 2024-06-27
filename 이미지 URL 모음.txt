@@ -101,3 +101,17 @@ https://storage.googleapis.com/teamproject1-majorflow/%20image/%EB%A7%88%EC%9D%B
 
 if (zonecode && roadAddress && roadAddressDetail) {
     signupAddress = `${zonecode} ${roadAddress} ${roadAddressDetail}`;
+
+
+
+<div class="bl_stack form">
+    <div class="el_ttl">주소</div>
+    <div class="bl_stack bl_stack--row">
+        <input type="text" class="el_input hp_txt-center" placeholder="" disabled
+            id="zonecode" required />
+        <button class="el_btn" id="find-addr-btn" onclick="findAddr()">우편번호 찾기</button>
+    </div>
+    <input type="text" class="el_input" placeholder="" disabled id="roadAddress" required />
+    <input type="text" class="el_input" placeholder="상세주소를 입력해주세요." id="roadAddressDetail" required />
+    <button class="el_btn" id="register-btn" onclick="registerAddr()">주소 등록하기</button>
+</div>
