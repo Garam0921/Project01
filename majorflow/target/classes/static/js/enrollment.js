@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         lectureDiv.appendChild(lectureImgDiv);
         lectureDiv.appendChild(lectureInfoDiv);
-        lectureImgDiv.appendChild(lectureImg);
         enrollment.appendChild(lectureDiv);
       });
     })

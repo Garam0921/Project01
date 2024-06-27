@@ -55,7 +55,6 @@ body {
 }
 
 .rightMenu {
-  padding: 10px;
   cursor: pointer;
 }
 
@@ -91,7 +90,7 @@ body {
 .subMenu > div {
   width: 250px;
   height: 50px;
-  margin: 20px 20px 20px 0px;
+  margin: 35px 20px 20px 0px;
   background-color: black;
   color: white;
   box-sizing: border-box;
@@ -120,16 +119,14 @@ body {
   height: 50px;
 }
 
-.cartIcon,
 .mypageIcon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
-.cartIcon > img,
-.mypageIcon > img {
-  width: 30px;
-  height: 30px;
+.cartIcon {
+  width: 20px;
+  height: 25px;
 }
 
 /* 관리자페이지  */
@@ -324,7 +321,7 @@ table {
   border: none;
   background-size: 300% 100%;
   border-radius: 50px;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -340,7 +337,7 @@ table {
 
 .noticeWriteBox3:hover {
   background-position: 100% 0;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -348,6 +345,11 @@ table {
 
 noticeWriteBox3:focus {
   outline: none;
+}
+
+.rightMenuBx {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .hidden {
