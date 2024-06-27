@@ -956,6 +956,45 @@ body {
   color: #333;
 }
 
+/* 모달창 스타일 추가 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #BBD0E9;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
 /* 수강신청 페이지 설정 */
 
 .enrollmentTitle {
@@ -1381,7 +1420,7 @@ body {
 }
 
 /* 모달 스타일 */
-.modal {
+.video-modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -1395,7 +1434,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.video-modal-content {
   background-color: #fefefe;
   margin: 5% auto;
   padding: 20px;
@@ -1403,15 +1442,15 @@ body {
   width: 80%;
 }
 
-.close {
+.video-close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.video-close:hover,
+.video-close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;

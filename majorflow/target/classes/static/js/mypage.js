@@ -2,10 +2,10 @@ const urlLogout = "http://localhost:8080/user/logout";
 const urlLectures = "http://localhost:8080/lectures";
 const urlMypage = "http://localhost:8080/user";
 
-//모달 엘리먼트 가져오기
+// 모달 엘리먼트 가져오기
 const modal = document.getElementById("videoModal");
 const modalVideo = document.getElementById("modalVideo");
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("video-close")[0];
 
 document.querySelector(".progressBtn").addEventListener("click", () => {
   document.querySelector(".myLectureBox").classList.add("hidden");
@@ -192,7 +192,7 @@ function StudyMylectures(user) {
 
         progressImg.src = item.lecture.thumbnailImg;
         progressSubjectName.textContent = item.lecture.lectureName;
-        progressGraph.textContent = "진도율" + progressNum + "%";
+        progressGraph.textContent = "진도율 " + progressNum + "%";
         progressStudyBtn.textContent = "학습하기";
 
         progressStudyBtn.addEventListener("click", () => {
@@ -204,7 +204,7 @@ function StudyMylectures(user) {
 
           // 모달 열기 및 비디오 재생
           modal.style.display = "block";
-          modalVideo.poster = item.lecture.item.lecture.thumbnailImg; // 썸네일 이미지 설정
+          modalVideo.poster = item.lecture.thumbnailImg; // 썸네일 이미지 설정
           modalVideo.src = item.lecture.videoPath;
           modalVideo.load();
           setTimeout(() => {
