@@ -508,7 +508,7 @@ body {
 }
 
 .list_right dl dt {
-  font-size: 14px;
+  font-size: 20px;
   color: #444;
   font-weight: bold;
   flex: 1;
@@ -516,7 +516,7 @@ body {
 }
 
 .list_right dl dd {
-  font-size: 13px;
+  font-size: 18px;
   color: #444;
   flex: 2;
   text-align: left;
