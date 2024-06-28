@@ -407,16 +407,18 @@ body {
   background-color: gray;
   height: 400px;
   width: 500px;
-  margin: 30px 30px 30px 0px;
+  margin: 30px;
 }
 
 .historyBox1 {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  gap: 60px; /* 이미지와 연혁 텍스트 사이 간격 */
 }
 
 .historyText1 {
-  margin: 30px 20px 30px 40px;
+  margin: 80px 30px; /* 이미지와 텍스트 사이의 간격을 더 벌림 */
   font-size: 20px;
   line-height: 40px;
   font-family: "Noto Serif KR", serif;
@@ -424,7 +426,7 @@ body {
 }
 
 .historyText2 {
-  margin: 30px 20px 30px 0px;
+  margin: 30px;
   font-size: 20px;
   line-height: 40px;
   font-family: "Noto Serif KR", serif;
@@ -445,56 +447,49 @@ body {
   margin: 20px 0;
 }
 
-.list_right, .list_left {
+.list_right {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
 }
 
-.list_right span, .list_left span {
+.list_right span {
   width: 20px;
 }
 
-.list_right div, .list_left div {
+.list_right div {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: calc(50% - 10px);
+  width: 100%;
 }
 
-.list_right div:before, .list_left div:before {
+.list_right div:before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   width: 1px;
   background: #dfdfdf;
-}
-
-.list_right div:before {
   left: -10px;
 }
 
-.list_left div:before {
-  right: -10px;
-}
-
-.list_right div ul, .list_left div ul {
+.list_right div ul {
   width: 100%;
 }
 
-.list_right div ul li, .list_left div ul li {
+.list_right div ul li {
   position: relative;
   padding: 10px 20px;
 }
 
-.list_right div ul li+li, .list_left div ul li+li {
+.list_right div ul li+li {
   margin-top: 20px;
 }
 
-.list_right div ul li:before, .list_left div ul li:before {
+.list_right div ul li:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -503,23 +498,16 @@ body {
   height: 12px;
   border: 3px solid #0a4a9f;
   border-radius: 50%;
-}
-
-.list_right div ul li:before {
   left: -20px;
 }
 
-.list_left div ul li:before {
-  right: -20px;
-}
-
-.list_right dl, .list_left dl {
+.list_right dl {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.list_right dl dt, .list_left dl dt {
+.list_right dl dt {
   font-size: 14px;
   color: #444;
   font-weight: bold;
@@ -527,12 +515,13 @@ body {
   text-align: left;
 }
 
-.list_right dl dd, .list_left dl dd {
+.list_right dl dd {
   font-size: 13px;
   color: #444;
   flex: 2;
   text-align: left;
 }
+
 
 
 
