@@ -308,7 +308,6 @@ body {
   font-weight: bold;
 }
 
-/* padding 제거 오겸비 수정 */
 .rightMenu {
   cursor: pointer;
 }
@@ -325,7 +324,6 @@ body {
   color: gray;
 }
 
-/* rightMenuBx 추가 오겸비 수정 */
 .rightMenuBx {
   display: flex;
   justify-content: space-evenly;
@@ -348,8 +346,6 @@ body {
   justify-content: start;
   align-items: center;
 }
-
-/* margin 오겸비 수정 */
 
 .subMenu > div {
   width: 250px;
@@ -392,7 +388,7 @@ body {
   height: 25px;
 }
 
-/* 연혁 페이지 설정 */
+/* 연혁 페이지 설정*/
 
 .historyTitle {
   font-size: 50px;
@@ -407,7 +403,7 @@ body {
   background-color: gray;
   height: 400px;
   width: 500px;
-  margin: 30px;
+  margin: 35px 30px 30px 30px;
 }
 
 .historyBox1 {
@@ -418,7 +414,7 @@ body {
 }
 
 .historyText1 {
-  margin: 60px 30px; /* 이미지와 텍스트 사이의 간격을 더 벌림 */
+  margin: 30px 30px 80px 30px; /* 이미지와 텍스트 사이의 간격을 더 벌림 */
   font-size: 20px;
   line-height: 40px;
   font-family: "Noto Serif KR", serif;
@@ -445,6 +441,10 @@ body {
   color: #444;
   line-height: 1;
   margin: 20px 0;
+}
+
+.historyYear {
+  padding-bottom: 10px;
 }
 
 .list_right {
@@ -483,10 +483,10 @@ body {
 
 .list_right div ul li {
   position: relative;
-  padding:8px 10px;
+  padding: 8px 10px;
 }
 
-.list_right div ul li+li {
+.list_right div ul li + li {
   margin-top: 20px;
 }
 
@@ -523,9 +523,6 @@ body {
   flex: 2;
   text-align: left;
 }
-
-
-
 
 /* 강사진 페이지 설정*/
 .teacherTitle {
@@ -610,7 +607,7 @@ body {
 
 .singleTeacher1 > div {
   font-size: 20px;
-  padding: 10px 0px 0px 0px;
+  padding: 10px 0px 10px 0px;
 }
 
 .singleTeacher2 > div {
@@ -754,12 +751,10 @@ body {
 .tasteCourse {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px 145px;
-  margin-left: 145px;
+  gap: 20px 123px;
+  margin-left: 103px;
   margin-bottom: 40px;
 }
-
-/* margin 오겸비 수정 */
 
 .tasteCourseClick {
   margin: 20px 0 20px 0;
@@ -796,10 +791,8 @@ body {
   font-size: 20px;
 }
 
-/* margin 추가 오겸비 수정 */
-
 .coursePriceGuide {
-  width: 90%;
+  width: 80%;
   height: 800px;
   margin: 0 auto;
   border-radius: 15px; /* 둥근 모서리 */
@@ -936,7 +929,6 @@ body {
 
 /*공지사항*/
 
-/* margin 추가 오겸비 수정 */
 .noticeBox2 {
   width: 90%; /* 가로 길이 조정 */
   height: 110px;
@@ -951,7 +943,7 @@ body {
 }
 
 .noticeBox2.active {
-  height: 330px;
+  height: auto;
   transition: height 0.3s ease;
 }
 .noticeBox3 {
@@ -960,7 +952,7 @@ body {
   width: 100%;
   height: 88px;
 }
-/* padding-left 추가 오겸비 수정 */
+
 .noticeBox3-1 {
   font-size: 24px; /* 텍스트 크기 축소 */
   font-weight: bold;
@@ -1002,17 +994,17 @@ body {
 .noticeBoxLine {
   width: 100%;
   height: 1px;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 20px;
   border: 1px solid white; /* 연한 색상으로 변경 */
 }
-/* padding-left 추가 오겸비 수정 */
+
 .noticeBox4 {
   font-size: 18px; /* 텍스트 크기 축소 */
-  height: 150px;
+  height: 140px;
   padding-left: 20px;
 }
-/* padding 추가 오겸비 수정 */
+
 .noticeBox5 {
   display: flex;
   align-items: center; /* 수직 가운데 정렬 */
@@ -1045,6 +1037,27 @@ body {
 .noticeBox5-1:hover {
   background-color: #0056b3;
   transform: scale(1.05);
+}
+
+.noticeReply {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  font-size: 15px;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+
+  width: 95%;
+  height: 80px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.noticeReply > div {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #aaaaaa;
 }
 
 .commentBox {
@@ -1207,11 +1220,12 @@ body {
   margin: 0px 0px 30px 0px;
   display: flex;
   flex-basis: 100%;
+  padding: 10px;
 }
 
 .lectureEnrollInfo {
   width: 810px;
-  margin: 30px;
+  margin: 30px 30px 30px 10px;
 }
 
 .lectureEnrollimg {
@@ -1224,6 +1238,7 @@ body {
 
 .lectureEnrollimg > img {
   width: 400px;
+  height: 266px;
   border-radius: 25px;
 }
 
@@ -1268,7 +1283,7 @@ body {
 .moveToCartBtnContainer {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin: 30px;
 }
 
 /* 체크박스 스타일링 */
@@ -1301,7 +1316,6 @@ body {
 }
 
 /* 장바구니 */
-
 .box1Cart {
   width: 100%;
   min-height: 800px;
@@ -1647,7 +1661,7 @@ body {
 .reviewBox {
   width: 100%;
   height: 300px;
-  background-color: #fff;
+  background-color: #d5d7d8;
 }
 .reviewBox2-content {
   width: 100%;
@@ -1665,7 +1679,7 @@ body {
   justify-items: center;
 }
 .reviewBox4 {
-  width: 240px;
+  width: 300px;
   height: 47px;
   text-align: center;
   font-size: 30px;
@@ -2272,6 +2286,10 @@ body {
 .alertClose:focus,
 #alertConfirm:focus {
   outline: none;
+}
+
+.cartEnrollBtn {
+  margin-top: 110px;
 }
 
 .hidden {
